@@ -57,8 +57,11 @@ contains
   pure module subroutine forward(self, input)
     class(locally_connected2d_layer), intent(in out) :: self
     real, intent(in) :: input(:,:)
+    integer :: input_width
     integer :: j, n
     integer :: iws, iwe
+
+    input_width = size(input, dim=2)
 
     do j = 1, self % width
       iws = self % stride * (j-1) + 1

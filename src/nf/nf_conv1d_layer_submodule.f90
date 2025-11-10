@@ -59,8 +59,11 @@ contains
   pure module subroutine forward(self, input)
     class(conv1d_layer), intent(in out) :: self
     real, intent(in) :: input(:,:)
+    integer :: input_width
     integer :: j, n
     integer :: iws, iwe
+
+    input_width = size(input, dim=2)
 
     ! Loop over output positions.
     do j = 1, self % width
